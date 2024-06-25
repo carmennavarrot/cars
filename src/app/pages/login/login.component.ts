@@ -32,7 +32,7 @@ login(){
   this.authService.login(email, pass).subscribe({
     next: (response)=>{
       const loginResponse: LoginREsponse = response as LoginREsponse
-      const user: User = { token: loginResponse.token, id: loginResponse.id}
+      const user: User = { token: loginResponse.token, id: loginResponse.id, role: loginResponse.role }
       this.authService.saveUser(user)
       this.router.navigateByUrl("/")
     },

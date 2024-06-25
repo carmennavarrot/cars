@@ -47,10 +47,16 @@ url: string = "http://localhost:3000/api/bookings"
       
     return this.http.delete(`${this.url}/${this.authService.user?.id}/${bookingId}`, {headers})
   }
-
+// editar reserva
 updateBooking(bookingId: string){
   return this.http.put(this.url, this.updateBooking)
 }
+
+//sacar todas las reservas
+getAllReservations() {
+  return this.http.get(this.url);
+}
+
 }
 
 

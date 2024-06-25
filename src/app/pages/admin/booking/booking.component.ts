@@ -17,17 +17,19 @@ export class BookingComponent {
   bookings: Booking[] = []
 
 constructor(private bookingService: BookingService,
-  private authService: AuthService
+ 
 ){
-  bookingService.getByUserId(authService.user!.id).subscribe({
+  bookingService.getAllReservations().subscribe({
     next:(response)=>{
       this.bookings = response as Booking[]
     },
-    error: ()=>{}
+    error: ()=>{
+      
+    }
   })
+
 }
 
 
-eliminar(){}
-editar(){}
+
 }

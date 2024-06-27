@@ -47,4 +47,12 @@ export class AuthService {
     this.user = null
     this.cookieService.delete("user")
   }
+
+  getAllReservations() {
+    return this.http.get(this.url);
+  }
+  isUserAdmin(): boolean {
+    return this.user?.role === 'admin';
+  }
+ 
 }

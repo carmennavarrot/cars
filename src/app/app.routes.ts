@@ -12,6 +12,7 @@ import { AdminComponent } from './pages/admin/admin.component';
 import { BookingComponent } from './pages/admin/booking/booking.component';
 import { UsersComponent } from './pages/admin/users/users.component';
 import { VehiclesComponent } from './pages/admin/vehicles/vehicles.component';
+import { isAdminGuard } from './guards/is-admin.guard';
 
 export const routes: Routes = [
     {
@@ -49,7 +50,7 @@ export const routes: Routes = [
     {
         path: "admin",
         component: AdminComponent,
-        canActivate:[isLoggedInGuard],
+        canActivate:[isAdminGuard],
         children:[
             {
                 path: "bookings",

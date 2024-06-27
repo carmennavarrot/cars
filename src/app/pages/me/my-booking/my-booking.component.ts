@@ -16,19 +16,19 @@ import { CanCancelPipe } from '../../../pipes/can-cancel.pipe';
   styleUrl: './my-booking.component.css'
 })
 export class MyBookingComponent {
-  bookings: Booking[] = []
+  bookings: Booking[] = [];
 
-  constructor(private bookingService: BookingService,
-    private authService: AuthService
-  ){
-    bookingService.getByUserId(authService.user!.id).subscribe({
-      next:(response)=>{
+  constructor(private bookingService: BookingService, private authService: AuthService){
+    this.bookingService.getByUserId(authService.user!.id).subscribe({
+      next: (response)=>{
         this.bookings = response as Booking[]
       },
-      error: ()=>{}
+      error: ()=>{
+
+      }
     })
-    
   }
+
   eliminar(bookingId: string){
     Swal.fire({
       title: "¿Estás seguro?",
@@ -40,7 +40,7 @@ export class MyBookingComponent {
       confirmButtonText: "Sí, eliminar"
     }).then((result) => {
       if (result.isConfirmed) {
-        this.bookingService. deleteBooking(bookingId).subscribe({
+        this.bookingService.deleteBooking(bookingId).subscribe({
           next: ()=>{
             Swal.fire({
               title: "¡Reserva eliminada!",
@@ -68,26 +68,26 @@ export class MyBookingComponent {
     });
   }
 
-  editar(bookingId: string){
-    const reservaEditar: Booking|undefined = this.bookings.find(x=>x._id === bookingId)
-    if(reservaEditar){
-      Swal.fire({
-      title: `Tu reserva del ${reservaEditar.vehicle.brand} ${reservaEditar.vehicle.model}`,
-      html: `<div>
-        <div>
-          <label class="form-label">Fecha inicio</label>
-          <input type="date" class="form-control">
-        </div>
-        <div>
-        <label class="form-label">Fecha fin</label>
-        <input type="date" class="form-control">
-      </div>
-      </div>`,
-      didClose: ()=>{
-        // update de la reserva
-      }
-      })
-    }
+  // editar(bookingId: string){
+  //   const reservaEditar: Booking|undefined = this.bookings.find(x=>x._id === bookingId)
+  //   if(reservaEditar){
+  //     Swal.fire({
+  //     title: `Tu reserva del ${reservaEditar.vehicle.brand} ${reservaEditar.vehicle.model}`,
+  //     html: `<div>
+  //       <div>
+  //         <label class="form-label">Fecha inicio</label>
+  //         <input type="date" class="form-control">
+  //       </div>
+  //       <div>
+  //       <label class="form-label">Fecha fin</label>
+  //       <input type="date" class="form-control">
+  //     </div>
+  //     </div>`,
+  //     didClose: ()=>{
+  //       // update de la reserva
+  //     }
+  //     })
+  //   }
     
-  }
+  // }
 }

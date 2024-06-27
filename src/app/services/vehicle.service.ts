@@ -16,4 +16,5 @@ export class VehicleService {
   getById(id: string){
     return this.http.get(`${this.url}/${id}`)
   }
+  
 }

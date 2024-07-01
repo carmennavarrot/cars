@@ -23,7 +23,8 @@ constructor(private bookingService: BookingService,
     next:(response)=>{
       this.bookings = response as Booking[]
     },
-    error: ()=>{
+    error: (error)=>{
+      console.log("Error al obtener las reservas", error)
       
     }
   })

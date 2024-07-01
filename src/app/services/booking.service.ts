@@ -39,7 +39,7 @@ url: string = "http://localhost:3000/api/bookings"
       discount: discount
     }, {headers});
   }
-  // delete autorizado
+  // delete autorizado, eliminar reserva
   deleteBooking(bookingId: string){
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.authService.user?.token}`})
@@ -48,7 +48,7 @@ url: string = "http://localhost:3000/api/bookings"
     return this.http.delete(`${this.url}/${this.authService.user?.id}/${bookingId}`, {headers})
   }
 // editar reserva
-updateBooking(bookingId: string){
+updateBooking(){
   return this.http.put(this.url, this.updateBooking)
 }
 
@@ -56,6 +56,8 @@ updateBooking(bookingId: string){
 getAllReservations() {
   return this.http.get(this.url);
 }
+
+
 
 }
 

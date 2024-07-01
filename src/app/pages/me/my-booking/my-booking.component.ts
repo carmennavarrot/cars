@@ -23,7 +23,8 @@ export class MyBookingComponent {
       next: (response)=>{
         this.bookings = response as Booking[]
       },
-      error: ()=>{
+      error: (err)=>{
+        console.log("error al obtener las reservas", err)
 
       }
     })
